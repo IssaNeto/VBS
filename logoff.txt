@@ -1,0 +1,34 @@
+Forçar o Logoff de Usuários Remotamente (pt-BR)
+Neste artigo o colunista Erick Albuquerque irá mostrar como forçar o logoff de usuários remotamente.
+
+
+Primeiro passo é descobrir qual sessão e quais usuários estão conectados no computador remoto, siga o procedimento:
+
+1. Iniciar > executar > cmd > OK
+2. Digite:
+
+query session /server:computadorremoto
+
+
+3. O usuário ealbuquerque está conectado na sessão rdp-tcp#98 e com o ID 3.
+
+Notem que temos 2 usuários conectados, o Administrator e o ealbuquerque. Vejam que o STATE está como Active, significa que o usuário está com a sessão aberta. Se caso o usuário ealbuquerque fechasse a sessão sem fazer logoff iria aparecer como Disc, veja imagem abaixo:
+ 
+
+
+4. Com o usuário ativo na sessão nos conseguimos forçar o logoff pelo sessionname e/ou ID, se caso o usuário estiver com a sessão aberta, mas desconectado, você só conseguira forçar o logoff a partir do ID.
+
+5. Forçando o usuário a fazer logoff.
+Iniciar > executar > cmd > OK
+Digite: logoff 3 /Server:computadorremoto
+Após a execução do comando, não deverá retornar nenhuma mensagem, se isto acontecer é porque foi forçado o logoff com sucesso!
+
+6. Para verificar se realmente foi forçado o logoff execute o comando: query session /Server:computadorremoto, notem que o usuário ealbuquerque não é mais listado.
+
+
+
+Conclusão
+
+Neste artigo aprendemos a forçar o logoff de um determinado usuário remotamente.
+
+
